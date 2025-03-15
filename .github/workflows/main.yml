@@ -1,0 +1,21 @@
+name: Release Node.js app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Check out the repository
+        uses: actions/checkout@v4
+
+      - 
+        name: Trigger deployment on Render
+        uses: JorgeLNJunior/render-deploy@v1.4.5
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
